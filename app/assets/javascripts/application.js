@@ -14,6 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require jquery-rails
-//= require messenger
-//= require messenger-theme-future

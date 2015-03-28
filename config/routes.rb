@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :coachings
+
   resources :users
 
   get 'static_pages/home'
