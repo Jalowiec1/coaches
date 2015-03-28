@@ -8,15 +8,15 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
     log_in user
     redirect_to user
-      # Log the user in and redirect to the user's show page.
     else
-      flash[:danger] = 'Invalid email/password combination' # Not quite right!
+      flash[:danger] = 'Invalid email/password combination' 
       render 'new'
     end
     
   end
   
-  def delete
-    
+  def destroy
+    log_out
+    redirect_to root_url
   end
 end

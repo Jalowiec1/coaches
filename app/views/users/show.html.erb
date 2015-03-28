@@ -1,19 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Age:</strong>
-  <%= @user.age %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div><%= current_user.name.to_s %></div>
+<h1>Welcome to your dashboard</h1>
+<h2>Here you can menage your students</h2>
+<ul>
+    <li>Students' massenger</li>
+    <li>Your students accounts</li>
+</ul>
