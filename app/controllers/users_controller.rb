@@ -1,8 +1,22 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
 
   def show
+    @users = User.all
     @user = User.find(params[:id])
     debugger
+  end
+  def activate_coach
+  @user = User.find(params[:id])
+  @user.update_attribute(:if_coach, true)
+  redirect_to @user
+  end
+  def no_longer_coach
+  @user = User.find(params[:id])
+  @user.update_attribute(:if_coach, false)
+  redirect_to @user
   end
 
   def new
