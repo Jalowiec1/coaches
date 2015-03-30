@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
+  include SessionsHelper
   def index
     @users = User.all
   end
-
+  def add_coach(coach_id)
+    Coaching.new(:student_id => current_user.id, :coach_id => coach_id)
+  end
   def show
-    @users = User.all
     @user = User.find(params[:id])
-    debugger
   end
   def activate_coach
   @user = User.find(params[:id])
