@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post '/new_message' => 'chats#new_message', :as => :new_message
   resources :coachings
 
-  resources :users, except: 'index' do
+  resources :users do
     resources :abilities
   end
   match "/users/:id/activate_coach" => "users#activate_coach", :as => "active_coach", via: [:get, :post]
@@ -16,7 +16,29 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   root 'static_pages#home'
-  get  '/chatroom' => 'chats#room', :as => :chat
+  get 'new_message' => 'messages#new'
+  resources :messages, only: [:new, :create]
+  resources :conversations, only: [:index, :show, :destroy]
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :reply
+    end
+  end
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :restore
+    end
+  end
+  resources :conversations, only: [:index, :show, :destroy] do
+    collection do
+      delete :empty_trash
+    end
+  end
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :mark_as_read
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

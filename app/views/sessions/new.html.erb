@@ -1,13 +1,16 @@
 <h1>Log in</h1>
 
       <%= form_for(:session, url: login_path, :action => :create) do |f| %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
+      <table class="table table-striped table-hover ">
+      <tr>
+      <td><%= f.label :email %></td>
+      <td><%= f.email_field :email %></td>
+      </tr>
+      <tr>
+      <td><%= f.label :password %></td>
+      <td><%= f.password_field :password %></td>
+      </tr>
+      </table>
       <%= f.submit "Log in", class: "btn btn-primary" %>
       <% end %>
 
