@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   post '/new_message' => 'chats#new_message', :as => :new_message
   resources :coachings
 
-  resources :users do
+  resources :users, except: 'index' do
     resources :abilities
   end
   match "/users/:id/activate_coach" => "users#activate_coach", :as => "active_coach", via: [:get, :post]
   match "/users/:id/no_longer_coach" => "users#no_longer_coach", :as => "no_longer_coach", via: [:get, :post]
-  get 'users/list'
+  get 'coaches' => 'users#index'
   get 'static_pages/home'
   get 'sessions/new'
   get 'signup'  => 'users#new'
