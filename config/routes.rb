@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  post '/new_message' => 'chats#new_message', :as => :new_message
   resources :coachings
 
   resources :users do
