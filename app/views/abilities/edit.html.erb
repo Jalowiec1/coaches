@@ -1,0 +1,41 @@
+<h1>Editing ability</h1>
+
+<%= form_for [@user, @ability] do |f| %>
+  <% if @ability.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ability.errors.count, "error") %> prohibited this ability from being saved:</h2>
+
+      <ul>
+      <% @ability.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table class="table table-striped table-hover ">
+  <tbody>
+  <div class="field">
+    <tr>
+    <td><%= f.label :name %></td>
+    <td><%= @ability.name %></td>
+    </tr>
+  </div>
+  <div class="field">
+    <tr>
+    <td><%= f.label :value %></td>
+    <td><%= f.number_field :value %></td>
+    </tr>
+  </div>
+  <div class="field">
+    <tr>
+    <td><%= f.label :notice %></td>
+    <td><%= f.text_field :notice %></td>
+    </tr>
+  </div>
+  </tbody>
+  </table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<%= link_to 'Back', user_abilities_path, class: 'btn btn-default btn-sm' %>

@@ -1,0 +1,26 @@
+<h1>LIST OF COACHES</h1>
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+        <th>Name of coach</th>
+        <th>E-mail address</th>
+    </tr>
+  </thead>
+<tbody>
+    <% @users.each do |user| %>
+        <% if user.if_coach %>
+        <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <% if logged_in && !current_user.if_coach %>
+                <% if !current_user.coaches.include?(user) %>
+                <td><%= button_to '+', {:controller => "coachings", :action => "create", :coaching => { :student_id => current_user.id, :coach_id => user.id } } , :method=>:post %></td>
+                <% else %>
+                   <td>Coach added</td>
+                <% end %>
+            <% end %>
+        <% end %>
+        </tr>
+    <% end %>
+</tbody>
+</ul>

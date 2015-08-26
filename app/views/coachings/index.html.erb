@@ -1,0 +1,27 @@
+<h1>Listing coachings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Coach</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coachings.each do |coaching| %>
+      <tr>
+        <td><%= coaching.student_id %></td>
+        <td><%= coaching.coach_id %></td>
+        <td><%= link_to 'Show', coaching %></td>
+        <td><%= link_to 'Edit', edit_coaching_path(coaching) %></td>
+        <td><%= link_to 'Destroy', coaching, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coaching', new_coaching_path %>
