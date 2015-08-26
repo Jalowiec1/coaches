@@ -12,8 +12,4 @@ class User < ActiveRecord::Base
     has_many :coachings_as_coach, foreign_key: :coach_id, class_name: 'Coaching'
     has_many :students, through: :coachings_as_coach
     has_many :abilities
-    acts_as_messageable
-    def mailboxer_email(object)
-        email
-    end
 end

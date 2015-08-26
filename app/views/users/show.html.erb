@@ -14,7 +14,6 @@
             <% current_user.coaches.each do |coach| %>
                 <td><%= link_to coach.name, '/users/' + coach.id.to_s %></td>
                 <td><%= coach.email %></td>
-                <td><%= link_to 'Send message', new_message_path(to: coach), class: 'btn btn-default btn-sm' %></td>
             <% end %>
             </tbody
         <% else %>
@@ -36,7 +35,6 @@
                 <tr>
                     <td><%= link_to student.name, '/users/' + student.id.to_s, class: 'btn btn-default btn-sm' %></td>
                     <td><%= link_to "Click to see this students' abilities", user_abilities_path(student) %></td>
-                    <td><%= link_to 'Send message', new_message_path(to: student), class: 'btn btn-default btn-sm' %></td>
                 </tr>
                 <% end %>
 
@@ -45,7 +43,4 @@
         </table>
 <% else %>
     <h2>It's <%= @user.name %> profile</h2>
-    <% if current_user %>
-        <%= link_to 'Send message', new_message_path(to: current_user.id), class: 'btn btn-default btn-sm' %>
-    <% end %>
 <% end %>

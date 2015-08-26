@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331083311) do
+ActiveRecord::Schema.define(version: 20150407121247) do
 
   create_table "abilities", force: true do |t|
     t.string   "name"
@@ -81,6 +81,13 @@ ActiveRecord::Schema.define(version: 20150331083311) do
 
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+
+  create_table "messages", force: true do |t|
+    t.string   "content"
+    t.string   "recipient_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

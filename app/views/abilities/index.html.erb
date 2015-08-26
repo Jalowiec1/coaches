@@ -1,0 +1,31 @@
+<% if @user == current_user || @user.coaches.include?(current_user) %>
+  <h1>This is page with abilities of <%= @user.name %></h1>
+  <% if current_user.if_coach %>
+  <%= link_to 'New Ability', new_user_ability_path(@user), class: 'btn btn-default btn-sm' %>
+  <% end %>
+  <table class = "table table-striped table-hover ">
+    <tbody>
+      <% @abilities.each do |ability| %>
+        <tr>
+          <td><%= ability.name %></td>
+          <tr><td>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="<%= ability.value%>"
+                              aria-valuemin="0" aria-valuemax="100" style="width:<%= ability.value%>%">
+              <span class="sr-only"><%= ability.value %>% Complete</span>
+              </div>
+            </div>
+        </td></tr>
+          <td><%= ability.notice %></td>
+          <% if current_user.if_coach %>
+          <td><%= link_to 'Edit', edit_user_ability_path(@user, ability), class: 'btn btn-default btn-sm'%></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+<% else %>
+<h1>You don't have access here!</h1>
+<% end %>
